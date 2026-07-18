@@ -416,7 +416,7 @@ Core question: Does the system exist as documents and kits — not just inside t
 
 ## 8. Scoring Protocol (Evaluation Procedure)
 
-### 8.1 Evidence Collection — 60–90 minutes
+### 8.1 Evidence Collection — 10–60 minutes
 
 Collect the following from the evaluee, or inspect it directly. For remote evaluations, screenshots and file copies may substitute.
 

@@ -47,13 +47,14 @@ curl -L https://akm.cmdspace.work/files/akm-eval-skill.zip -o /tmp/akm.zip && un
 
 ## 실행
 
-새 Claude Code 세션에서:
+새 세션을 시작하고 한 마디 — 설치까지 포함해 명령 세 줄이 전부입니다:
 
 ```
-AKM 평가해줘
+claude          # 새 세션 시작
+AKM 평가해줘     # or: "run the AKM Index"
 ```
 
-에이전트가 다음을 수행합니다 (60–90분):
+에이전트가 다음을 수행합니다 (10–60분):
 `① 자격 판별 → ② 8개 영역 증거 수집 → ③ 25기준 채점(보수 판정) → ④ 적대적 자기검증 → ⑤ 정성 평가 → ⑥ akm-report.json 생성 → ⑦ 업로드 안내`
 
 ## 데이터 수집·프라이버시

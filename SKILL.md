@@ -18,7 +18,7 @@ description: "Self-assess your agentic knowledge management system against the A
 ### 0. 자격 판별
 ① 지속적 지식 저장소(Obsidian/Notion/레포/위키 등) ② 그것에 연결된 에이전트 런타임 1개 이상 ③ 최근 30일 사용 흔적 — 하나라도 없으면 "Pre-Level"로 안내하고 온보딩 권고만 제공.
 
-### 1. 증거 수집 (파일시스템 접근 가능한 범위에서, 60-90분)
+### 1. 증거 수집 (파일시스템 접근 가능한 범위에서, 10-60분)
 **시작 시각을 기록하라** (`date` 실행) — 마지막에 `assessment.durationMinutes`(시작→리포트 완성, 분 단위 정수)로 리포트에 넣는다.
 다음 8개 영역을 조사한다. **정량 사실(개수·날짜·크기)과 파일 경로**를 기록할 것:
 ① 에이전트 지시 파일 전수(CLAUDE.md/AGENTS.md/GEMINI.md/.cursorrules 등)와 스코프 배치 ② 지식 저장소 구조·명명 규칙·frontmatter/메타데이터 스키마 ③ 하네스 설정(훅·권한 allow/deny·MCP·메모리 파일) ④ 스킬/커맨드/자동화 목록 ⑤ 멀티 런타임 설정(~/.codex, ~/.gemini, ~/.cursor 등 — 있는 것만) ⑥ git/백업 커버리지(git status 실측, Time Machine 등) ⑦ 운영 루프(최근 30일 데일리/위클리 실물 개수, 인박스 규모, 에이전트 산출물 위치) ⑧ 검색 인프라(인덱스 유무·문서 수·갱신 주기).
