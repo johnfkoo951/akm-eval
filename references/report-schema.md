@@ -23,6 +23,7 @@
 ```json
 {
   "date": "YYYY-MM-DD",
+  "durationMinutes": 75,
   "rubricVersion": "1.0.0",
   "mode": "self-run | remote-kit | local-parallel-audit",
   "modeLabel": { "ko": "셀프 평가", "en": "Self-run" },
@@ -33,6 +34,8 @@
   }
 }
 ```
+
+`durationMinutes` (선택): 평가 시작→리포트 완성까지 실제 소요 시간(분, 정수). 성적표에 표시된다.
 
 ## subject — 신원과 동의 (⚠ 반드시 사용자 확인 후 기입)
 ```json
