@@ -67,6 +67,7 @@ description: "Self-assess your agentic knowledge management system against the A
    - `__AKM_REPORT_JSON__` → **공유용 마스킹을 적용한** 리포트 JSON 전문. 마스킹은 보드 인제스트와 동일 규칙: `showEmail=false`면 email을 앞 2자만 남기고 `ab•••@domain` 형태로, `showRealName=false`면 name 값을 nickname으로 교체. 마지막으로 JSON 문자열 내 `</`를 `<\/`로 이스케이프(스크립트 태그 조기 종료 방지).
    - `__RECEIPT_ID__` → 전송 응답의 receiptId. 이메일 폴백 제출이면 `email-pending`.
 2. 사용자에게 안내: 브라우저로 열면 공식 성적표와 동일한 리포트가 보이고(서버 불필요, 오프라인 동작), **파일 하나만 보내면 친구에게 공유**할 수 있다. 하단에 akm.cmdspace.work 평가 시작 CTA가 있어 받은 사람도 바로 자기 시스템을 평가할 수 있다.
+3. **(Artifact 도구가 있는 런타임 한정 — 예: Claude Code)** 배포본도 함께 띄운다: `akm-report.html`에서 `<body>`와 `</body>` 사이 내용만 추출하고 `<!-- external-font -->` 표시가 붙은 줄을 제거한 사본을 만들어 Artifact로 게시한다 (favicon `📊`, title `AKM Report — {닉네임}`). 게시 페이지는 **기본 비공개**이며 링크 공유는 사용자가 결정한다. 외부 요청이 차단되는 환경이라 폰트·로고는 시스템 폴백으로 렌더된다(정상 동작). Artifact 도구가 없으면 이 항목은 건너뛴다 — 로컬 파일만으로 완결이다.
 
 ## 안티게이밍 (채점자 자기 점검)
 - 문서만 있으면 2, 도구가 강제해야 3 — "문서화됨"을 "시스템화됨"으로 올려치지 말 것.

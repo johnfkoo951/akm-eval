@@ -1,0 +1,395 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "CMDS AKM Index" [ref=e3] [cursor=pointer]:
+      - /url: https://akm.cmdspace.work
+      - img "CMDS" [ref=e4]
+      - generic [ref=e5]: AKM Index
+    - generic [ref=e6]:
+      - link "평가 보드 ↗" [ref=e7] [cursor=pointer]:
+        - /url: https://akm.cmdspace.work/#board
+      - button "Toggle language" [ref=e8] [cursor=pointer]:
+        - generic [ref=e9]: EN
+      - button "Toggle theme" [ref=e10] [cursor=pointer]
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: 평가 리포트 · 로컬 발급본
+        - generic [ref=e18]: cmds-pipeline-test-2026-07 · rubric v1.0.0
+      - heading "CMDS Pipeline Test" [level=2] [ref=e19]
+      - generic [ref=e20]: CMDSPACE
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: 평가 일시
+          - generic [ref=e24]: 2026-07-20
+        - generic [ref=e25]:
+          - generic [ref=e26]: Email
+          - generic [ref=e27]: jo•••@gmail.com
+        - generic [ref=e28]:
+          - generic [ref=e29]: 평가 디바이스
+          - generic [ref=e30]:
+            - text: MacBook Pro 14″ · Apple M5 Max · 128GB
+            - generic [ref=e31]: macOS (Darwin 25)
+        - generic [ref=e32]:
+          - generic [ref=e33]: 지식 기반
+          - generic [ref=e34]:
+            - text: Obsidian · 7-vault ecosystem
+            - generic [ref=e35]: 14,860 md
+        - generic [ref=e36]:
+          - generic [ref=e37]: 평가 방식
+          - generic [ref=e38]:
+            - text: 파이프라인 검증 재실행
+            - generic [ref=e39]: 소요 약 1분
+        - generic [ref=e40]:
+          - generic [ref=e41]: 평가자
+          - generic [ref=e42]: Claude Code (Fable 5) — step-7 local report pipeline test
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e46]:
+          - generic [ref=e47]: "74.3"
+          - generic [ref=e48]: / 100
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - text: M3 ·
+            - generic [ref=e51]: 오케스트레이션
+          - generic [ref=e52]: 레벨 4 달성 4개 · 레벨 2 이하 6개
+      - generic [ref=e53]:
+        - generic [ref=e54]: "74.3"
+        - generic [ref=e61]:
+          - generic [ref=e62]: M0
+          - generic [ref=e63]: M1
+          - generic [ref=e64]: M2
+          - generic [ref=e65]: M3
+          - generic [ref=e66]: M4
+    - generic [ref=e67]:
+      - generic [ref=e68]:
+        - generic [ref=e69]: 성장 궤적
+        - generic [ref=e70]:
+          - text: ▲ +2.3
+          - generic [ref=e71]: 3회차 누적
+      - img [ref=e73]:
+        - generic [ref=e74]: "20"
+        - generic [ref=e75]: "40"
+        - generic [ref=e76]: "60"
+        - generic [ref=e77]: "80"
+        - generic [ref=e78]: M0
+        - generic [ref=e79]: M1
+        - generic [ref=e80]: M2
+        - generic [ref=e81]: M3
+        - generic [ref=e82]: M4
+        - generic [ref=e85]: "72.0"
+        - generic [ref=e86]: 2026-07-16
+        - generic [ref=e88]: "74.3"
+        - generic [ref=e89]: 2026-07-19
+        - generic [ref=e91]: "74.3"
+        - generic [ref=e92]: 2026-07-20
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]: 2026-07-16
+          - generic [ref=e96]: initial assessment (8-area parallel audit + 5 adversarial panels) · 72
+        - generic [ref=e97]:
+          - generic [ref=e98]: 2026-07-18
+          - generic [ref=e99]: Quick Win 5건 실행 + akm.cmdspace.work 공개 (이행률 5/5 추적)
+        - generic [ref=e100]:
+          - generic [ref=e101]: 2026-07-19
+          - generic [ref=e102]: "delta re-assessment (+2.25): C1·H3 승급, P3·X1 패널 기각 — '앵커는 완전성을 요구한다' · 74.25"
+        - generic [ref=e103]:
+          - generic [ref=e104]: 2026-07-20
+          - generic [ref=e105]: "pipeline-verification re-run — akm-eval step 7(로컬 성적표) 도입 검증, 기준 이동 없음(9건 스팟체크: skills 83·hooks 10종·deny 5·30d 활동 581md·금일 자동백업 확인) · 74.25"
+    - generic [ref=e106]:
+      - generic [ref=e107]: 필러별 점수 · 정성 코멘트
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - text: P
+            - generic [ref=e112]: 프롬프트
+          - generic [ref=e115]: 16 / 20
+        - generic [ref=e116]: 지시가 자산으로 관리되는 수준은 간판급. precedence·audience·token-estimate까지 담은 frontmatter 라우팅과 '사고가 나면 changelog에 규칙이 남는' 문화가 P1·P2를 레벨 4로 만들었다. 유일한 구조적 약점은 P3 — 82개 스킬이라는 규모가 만든 라우팅 문제에 negative trigger가 9%뿐이었다(평가 후 20개 보강 완료).
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - text: C
+            - generic [ref=e120]: 컨텍스트
+          - generic [ref=e123]: 21.25 / 25
+        - generic [ref=e124]: 재평가에서 C1이 3으로 승급 — 51 충돌 해소·루트 정리·lint 넘버링 검사가 인정됐고, 잔존 06 중복은 지도가 정확히 문서화하고 있어 주소 특정을 깨지 않는다는 판정. C4의 토큰 실측 폐루프와 C2의 스키마 진화는 여전히 이 시스템의 교과서 사례.
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - text: H
+            - generic [ref=e128]: 하네스
+          - generic [ref=e131]: 15 / 20
+        - generic [ref=e132]: H3이 3으로 승급 — 위성 볼트의 차단 훅 패턴을 글로벌로 이식한 deny+PreToolUse 가드가 파이프 실측으로 검증됐다. 훅은 권한 모드와 무관하게 작동해 skipDangerous와도 양립. 남은 구멍은 Codex(danger-full-access)와 정기 점검 스케줄.
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - text: L
+            - generic [ref=e136]: 루프
+          - generic [ref=e139]: 13 / 20
+        - generic [ref=e140]: "에이전트 루프(위성 ingest→query→file-back)는 실제로 돈다. 문제는 사람 쪽 — 데일리는 2024년 119개에서 2026년 12개로 붕괴했고 위클리는 한 번도 쓰인 적 없다. 더 아픈 것은 감사는 훌륭한데 감사 결과가 실행되지 않는다는 것: 시스템 자신의 기록으로 '자가개시 이행 ~0%'가 확정된 상태."
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - text: X
+            - generic [ref=e144]: 이식성·거버넌스
+          - generic [ref=e147]: 9 / 15
+        - generic [ref=e148]: X는 9.0 그대로 — 두 번의 기각이 모두 여기서 나왔다. X1은 토폴로지 결정 기록이라는 '정직한 문서'가 OpenClaw 미연결을 자백해 기각됐고(문서화의 양날), X4는 keychain 이전이 셸 스냅샷 재유출로 실효를 잃었다(완화책의 2차 효과 검증 교훈). 바깥으로 내보내는 인프라와 안을 지키는 인프라의 비대칭이 이 시스템의 마지막 숙제.
+    - generic [ref=e149]:
+      - generic [ref=e150]: 25개 기준 히트맵
+      - generic [ref=e152]: 셀에 마우스를 올리면 판정 근거·감점 사유가 보입니다.
+      - generic [ref=e153]:
+        - generic [ref=e154]:
+          - text: "0"
+          - generic [ref=e156]: 부재
+        - generic [ref=e157]:
+          - text: "1"
+          - generic [ref=e159]: 임시
+        - generic [ref=e160]:
+          - text: "2"
+          - generic [ref=e162]: 문서화
+        - generic [ref=e163]:
+          - text: "3"
+          - generic [ref=e165]: 시스템화
+        - generic [ref=e166]:
+          - text: "4"
+          - generic [ref=e168]: 자가개선
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]: P1
+            - generic [ref=e173]: 지시 계층화
+          - generic [ref=e174]: "4"
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - generic [ref=e177]: P2
+            - generic [ref=e178]: 작업 계약 명세
+          - generic [ref=e179]: "4"
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - generic [ref=e182]: P3
+            - generic [ref=e183]: 트리거·라우팅
+          - generic [ref=e184]: "2"
+        - generic [ref=e185]:
+          - generic [ref=e186]:
+            - generic [ref=e187]: P4
+            - generic [ref=e188]: 예시·반례
+          - generic [ref=e189]: "3"
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: P5
+            - generic [ref=e193]: 자산 수명주기
+          - generic [ref=e194]: "3"
+        - generic [ref=e195]:
+          - generic [ref=e196]:
+            - generic [ref=e197]: C1
+            - generic [ref=e198]: 지식 주소체계
+          - generic [ref=e199]: "3"
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e202]: C2
+            - generic [ref=e203]: 기계가독 메타데이터
+          - generic [ref=e204]: "4"
+        - generic [ref=e205]:
+          - generic [ref=e206]:
+            - generic [ref=e207]: C3
+            - generic [ref=e208]: 검색 인프라
+          - generic [ref=e209]: "3"
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e212]: C4
+            - generic [ref=e213]: 점진 공개·예산
+          - generic [ref=e214]: "4"
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]: C5
+            - generic [ref=e218]: 출처·신선도
+          - generic [ref=e219]: "3"
+        - generic [ref=e220]:
+          - generic [ref=e221]:
+            - generic [ref=e222]: H1
+            - generic [ref=e223]: 도구 표면
+          - generic [ref=e224]: "3"
+        - generic [ref=e225]:
+          - generic [ref=e226]:
+            - generic [ref=e227]: H2
+            - generic [ref=e228]: 스킬 라이브러리
+          - generic [ref=e229]: "3"
+        - generic [ref=e230]:
+          - generic [ref=e231]:
+            - generic [ref=e232]: H3
+            - generic [ref=e233]: 권한·가드레일
+          - generic [ref=e234]: "3"
+        - generic [ref=e235]:
+          - generic [ref=e236]:
+            - generic [ref=e237]: H4
+            - generic [ref=e238]: 지속 메모리
+          - generic [ref=e239]: "3"
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - generic [ref=e242]: H5
+            - generic [ref=e243]: 오케스트레이션·관측
+          - generic [ref=e244]: "3"
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - generic [ref=e247]: L1
+            - generic [ref=e248]: 파이프라인 정의
+          - generic [ref=e249]: "3"
+        - generic [ref=e250]:
+          - generic [ref=e251]:
+            - generic [ref=e252]: L2
+            - generic [ref=e253]: 주기 리뷰
+          - generic [ref=e254]: "2"
+        - generic [ref=e255]:
+          - generic [ref=e256]:
+            - generic [ref=e257]: L3
+            - generic [ref=e258]: 적체 관리
+          - generic [ref=e259]: "2"
+        - generic [ref=e260]:
+          - generic [ref=e261]:
+            - generic [ref=e262]: L4
+            - generic [ref=e263]: 복리 환류
+          - generic [ref=e264]: "3"
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - generic [ref=e267]: L5
+            - generic [ref=e268]: 자기교정 루프
+          - generic [ref=e269]: "3"
+        - generic [ref=e270]:
+          - generic [ref=e271]:
+            - generic [ref=e272]: X1
+            - generic [ref=e273]: 런타임 이식성
+          - generic [ref=e274]: "2"
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - generic [ref=e277]: X2
+            - generic [ref=e278]: 토폴로지
+          - generic [ref=e279]: "3"
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - generic [ref=e282]: X3
+            - generic [ref=e283]: 복구 가능성
+          - generic [ref=e284]: "2"
+        - generic [ref=e285]:
+          - generic [ref=e286]:
+            - generic [ref=e287]: X4
+            - generic [ref=e288]: 보안·프라이버시
+          - generic [ref=e289]: "2"
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - generic [ref=e292]: X5
+            - generic [ref=e293]: 전수·표준화
+          - generic [ref=e294]: "3"
+    - generic [ref=e295]:
+      - generic [ref=e296]: 환경 · 에이전트 사용 지표
+      - generic [ref=e298]:
+        - generic [ref=e299]:
+          - generic [ref=e300]:
+            - generic [ref=e301]:
+              - text: Claude Code
+              - generic [ref=e302]: primary
+            - generic [ref=e305]: 90%
+          - generic [ref=e306]:
+            - generic [ref=e307]:
+              - text: OpenClaw
+              - generic [ref=e308]: specialized
+            - generic [ref=e311]: 7%
+          - generic [ref=e312]:
+            - generic [ref=e313]:
+              - text: Codex / Fugu
+              - generic [ref=e314]: specialized
+            - generic [ref=e317]: 3%
+          - generic [ref=e318]:
+            - generic [ref=e319]:
+              - text: Gemini CLI · Antigravity · Cursor · Hermes
+              - generic [ref=e320]: dormant/detached
+            - generic [ref=e322]: 0%
+          - generic [ref=e323]: "볼트 산출물 lane 파일 수 기준 (03-1: 696 · 03-4: 55 · 03-5: 22)"
+        - generic [ref=e324]:
+          - generic [ref=e325]:
+            - generic [ref=e326]: "87"
+            - generic [ref=e327]: 커스텀 스킬
+          - generic [ref=e328]:
+            - generic [ref=e329]: 20+
+            - generic [ref=e330]: MCP 서버
+          - generic [ref=e331]:
+            - generic [ref=e332]: "16"
+            - generic [ref=e333]: 훅
+          - generic [ref=e334]:
+            - generic [ref=e335]: "12"
+            - generic [ref=e336]: 슬래시 커맨드
+          - generic [ref=e337]:
+            - generic [ref=e338]: 9,149
+            - generic [ref=e339]: 검색 인덱스 문서
+          - generic [ref=e340]:
+            - generic [ref=e341]: 62%
+            - generic [ref=e342]: 인박스 비중
+    - generic [ref=e343]:
+      - generic [ref=e344]: 정성 평가
+      - generic [ref=e346]: 도구로 강제할 수 있는 층은 사흘 만에 채웠다. 이제 점수를 막는 것은 작업이 아니라 두 가지 — 시간(루프 가동 증거)과, 바깥을 배포하는 실력만큼 안을 지키는 안전망(백업·시크릿·마지막 런타임 연결)이다.
+      - generic [ref=e347]:
+        - generic [ref=e348]:
+          - heading "강점 Top 3" [level=3] [ref=e349]
+          - list [ref=e350]:
+            - listitem [ref=e351]:
+              - text: ◆
+              - generic [ref=e352]: 사고 이력이 규칙이 되는 문화 — 포스트모템→구조화가 날짜와 함께 changelog·훅 주석에 남는다
+            - listitem [ref=e353]:
+              - text: ◆
+              - generic [ref=e354]: 토큰을 실측하는 컨텍스트 예산 — 추정→실측→재설계→재실측의 기록
+            - listitem [ref=e355]:
+              - text: ◆
+              - generic [ref=e356]: 감사→백로그→실행→재감사 완결 사이클 1회차 달성 — 07-16 평가의 Quick Win 5건이 이행률 추적과 함께 실행·재검증됐다
+        - generic [ref=e357]:
+          - heading "개선 로드맵 (예상 상승폭)" [level=3] [ref=e358]
+          - table [ref=e359]:
+            - rowgroup [ref=e360]:
+              - row [ref=e361]:
+                - cell "X1" [ref=e362]
+                - cell "OpenClaw에 위성 Core Context 스냅샷 공급 (X1 승급의 마지막 조건)" [ref=e363]
+                - cell "+0.75" [ref=e364]
+              - row [ref=e365]:
+                - cell "P3" [ref=e366]
+                - cell "회의록 3중 경합 등 잔여 스킬 쌍 중재 (organizer·writer 계열 포함)" [ref=e367]
+                - cell "+1" [ref=e368]
+              - row [ref=e369]:
+                - cell "X4" [ref=e370]
+                - cell "PAT 로테이트 + 스냅샷 누수 구조 수선(래퍼 v2 적용됨) + LG 게이트 패스워드 env 이전" [ref=e371]
+                - cell "+0.75" [ref=e372]
+              - row [ref=e373]:
+                - cell "X3" [ref=e374]
+                - cell "마더십 git 백업 + Time Machine 설정" [ref=e375]
+                - cell "+0.75" [ref=e376]
+              - row [ref=e377]:
+                - cell "L2·L3" [ref=e378]
+                - cell "에이전트 주도 위클리 리뷰 재설계 (30일 가동 증거 축적)" [ref=e379]
+                - cell "+2" [ref=e380]
+              - row [ref=e381]:
+                - cell "L5" [ref=e382]
+                - cell "감사 사이클 2회차 완결 (이행률 추적 지속)" [ref=e383]
+                - cell "+1" [ref=e384]
+              - row [ref=e385]:
+                - cell "C3·H2·H5·L4" [ref=e386]
+                - cell "측정 레이어 — 검색 실패·스킬 빈도·환류율 분기 리포트" [ref=e387]
+                - cell "+4.25" [ref=e388]
+      - generic [ref=e389]:
+        - generic [ref=e390]: 가이드 —
+        - text: 이번 재평가의 교훈은 '앵커는 완전성을 요구한다'는 것이다. P3와 X1은 실제 작업이 있었지만 고빈도 충돌 하나, 활성 런타임 하나가 남아 기각됐다 — 다음 레벨은 80%가 아니라 마지막 20%에서 결정된다. 남은 +10.5의 절반은 측정 레이어(4.25)와 루프 가동(3.0)이며 둘 다 도구가 아니라 시간과 습관의 문제다. M4 진입은 10월 3차 평가에서 노려라.
+    - generic [ref=e392]:
+      - text: "검증: 적대적 패널 1개 · 스팟체크 9건 · 판정 규칙: 증거 없으면 상한 1 / 애매하면 낮은 쪽 / L4는 기록 필수"
+      - generic [ref=e394]:
+        - text: 제출 영수증
+        - code [ref=e395]: sub_2026-07-20T04-04-39-390Z_5fsay7
+        - text: "— 이 파일은 AKM 운영팀 제출 직후 로컬에서 발급된 개인 사본입니다. 공식 보드:"
+        - link "akm.cmdspace.work" [ref=e396] [cursor=pointer]:
+          - /url: https://akm.cmdspace.work
+    - generic [ref=e397]:
+      - generic [ref=e398]: 당신의 시스템은 몇 점일까요?
+      - generic [ref=e399]: AKM Index는 에이전트 지식관리 시스템의 성숙도를 5개 필러 · 25개 기준으로 측정하는 공개 루브릭입니다. 이 리포트의 주인공처럼, 에이전트에 스킬을 설치하면 10-60분 만에 증거 기반 평가를 받을 수 있습니다.
+      - link "내 시스템 평가하기 — akm.cmdspace.work →" [ref=e400] [cursor=pointer]:
+        - /url: https://akm.cmdspace.work
+        - generic [ref=e401]: 내 시스템 평가하기 — akm.cmdspace.work
+        - text: →
+      - generic [ref=e402]: 평가 스킬 다운로드 · 루브릭 전문 · 공개 보드 모두 위 링크에서.
+  - contentinfo [ref=e403]:
+    - generic [ref=e404]:
+      - link "AKM Index v1.0" [ref=e405] [cursor=pointer]:
+        - /url: https://akm.cmdspace.work
+      - text: 기반 — 증거 기반 · 적대적 검증 통과. © 2026 CMDSPACE
