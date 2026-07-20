@@ -55,10 +55,18 @@ description: "Self-assess your agentic knowledge management system against the A
   ```bash
   curl -sS -X POST https://akm.cmdspace.work/api/submit -H "Content-Type: application/json" --data-binary @akm-report.json
   ```
-  응답의 `receiptId`를 사용자에게 보여준다 — 철회 시 이 ID로 요청.
-- **사용자가 원치 않는다고 한 경우**: `consent.submit: false` — 전송하지 않는다. 평가는 그대로 유효하며 로컬 파일만 남는다.
-- **전송 실패 시**(오프라인 등): 이메일 폴백 — `akm-report.json`을 **Cmdspace.contact@gmail.com** 에 첨부 (제목: "AKM 평가 제출 — {닉네임}").
+  응답의 `receiptId`를 사용자에게 보여준다 — 철회 시 이 ID로 요청. 이어서 **7단계(로컬 성적표 발급)**를 수행한다.
+- **사용자가 원치 않는다고 한 경우**: `consent.submit: false` — 전송하지 않는다. 평가는 그대로 유효하며 로컬 파일(JSON·마크다운 요약)만 남는다. 7단계는 생략.
+- **전송 실패 시**(오프라인 등): 이메일 폴백 — `akm-report.json`을 **Cmdspace.contact@gmail.com** 에 첨부 (제목: "AKM 평가 제출 — {닉네임}"). 폴백 제출도 제출이다 — 7단계를 수행한다.
 - 철회·수정: 언제든 위 이메일로 receiptId와 함께 요청하면 기록·보드에서 제거된다.
+
+### 7. 로컬 성적표 발급 (제출자 보상 — 제출한 경우에만)
+제출에 대한 보상으로, 공식 보드 성적표와 동일한 포맷의 HTML을 로컬에 발급한다. 보드 공개 여부(publicCard/publicDetail)와 무관하게 **제출만 했다면** 발급하고, `consent.submit: false`면 생략한다.
+
+1. `references/report-template.html`을 읽어 `akm-report.json` 옆에 `akm-report.html`로 저장하되, 플레이스홀더 2개를 치환한다 (각각 정확히 1회 등장):
+   - `__AKM_REPORT_JSON__` → **공유용 마스킹을 적용한** 리포트 JSON 전문. 마스킹은 보드 인제스트와 동일 규칙: `showEmail=false`면 email을 앞 2자만 남기고 `ab•••@domain` 형태로, `showRealName=false`면 name 값을 nickname으로 교체. 마지막으로 JSON 문자열 내 `</`를 `<\/`로 이스케이프(스크립트 태그 조기 종료 방지).
+   - `__RECEIPT_ID__` → 전송 응답의 receiptId. 이메일 폴백 제출이면 `email-pending`.
+2. 사용자에게 안내: 브라우저로 열면 공식 성적표와 동일한 리포트가 보이고(서버 불필요, 오프라인 동작), **파일 하나만 보내면 친구에게 공유**할 수 있다. 하단에 akm.cmdspace.work 평가 시작 CTA가 있어 받은 사람도 바로 자기 시스템을 평가할 수 있다.
 
 ## 안티게이밍 (채점자 자기 점검)
 - 문서만 있으면 2, 도구가 강제해야 3 — "문서화됨"을 "시스템화됨"으로 올려치지 말 것.

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKM Assessment Report</title>
+    <meta name="description" content="AKM Index assessment report (local copy) — pillar scores, criterion heatmap, environment metrics, and qualitative guidance.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="https://akm.cmdspace.work/assets/logos/cmds-logo-round.png">
+    <link rel="apple-touch-icon" href="https://akm.cmdspace.work/assets/logos/cmds-logo-round.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        :root {
+            --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
+            --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Pretendard', 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: ui-monospace, 'SF Mono', 'Menlo', 'Monaco', Consolas, monospace;
+            --cmds-green: #134538;
+            --cmds-green-hover: #1a5d4b;
+            --cmds-green-bright: #22896a;
+            --cmds-green-glow: #2fb488;
+            --cmds-green-50: #f1f7f4;
+            --cmds-green-100: #dcebe3;
+            --cmds-green-200: #bad9c9;
+            --cmds-pink: #E985A2;
+            --cmds-pink-light: #F4A4B8;
+            --cmds-pink-dark: #D16C8A;
+            --cmds-pink-soft: #2b1922;
+            --bg: #fbfbfa;
+            --bg-elev: #ffffff;
+            --bg-subtle: #f5f6f4;
+            --fg: #0a0d0b;
+            --fg-muted: #4a544f;
+            --fg-subtle: #8a938e;
+            --border: #e6e8e6;
+            --border-strong: #d0d3d0;
+            --accent: var(--cmds-green);
+            --accent-soft: var(--cmds-green-50);
+            --accent-on: #ffffff;
+            --section-px: clamp(24px, 5vw, 80px);
+            --header-h: 56px;
+            --max-w: 980px;
+        }
+        [data-theme="dark"] {
+            --bg: #06080a;
+            --bg-elev: #0d1411;
+            --bg-subtle: #0a1110;
+            --fg: #f2f4f3;
+            --fg-muted: #9aa39d;
+            --fg-subtle: #626a66;
+            --border: #1a231f;
+            --border-strong: #26302a;
+            --accent: #E985A2;
+            --accent-soft: #2b1922;
+            --accent-on: #1B1B1B;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.55;
+            letter-spacing: -0.011em;
+            -webkit-font-smoothing: antialiased;
+            transition: background .3s ease, color .3s ease;
+        }
+        a { color: inherit; text-decoration: none; }
+        [data-lang="ko"] .en-only { display: none !important; }
+        [data-lang="en"] .ko-only { display: none !important; }
+
+        /* header */
+        .site-header {
+            position: sticky; top: 0; z-index: 50;
+            height: var(--header-h);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 var(--section-px);
+            background: color-mix(in srgb, var(--bg) 82%, transparent);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+        }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 15px; }
+        .brand-mark { border-radius: 50%; }
+        .header-actions { display: flex; align-items: center; gap: 8px; }
+        .icon-btn {
+            width: 32px; height: 32px; display: grid; place-items: center;
+            border: 1px solid var(--border); border-radius: 50%;
+            background: var(--bg-elev); color: var(--fg-muted); cursor: pointer;
+        }
+        .icon-btn:hover { color: var(--fg); border-color: var(--border-strong); }
+        .icon-btn svg { width: 15px; height: 15px; }
+        .back-link { font-size: 13px; color: var(--fg-muted); margin-right: 8px; }
+        .back-link:hover { color: var(--fg); }
+
+        /* report shell */
+        .report { max-width: var(--max-w); margin: 0 auto; padding: 48px var(--section-px) 80px; }
+        .r-card {
+            background: var(--bg-elev); border: 1px solid var(--border);
+            border-radius: 18px; padding: clamp(24px, 4vw, 40px); margin-bottom: 22px;
+        }
+        .r-eyebrow {
+            font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .r-eyebrow .rid { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--fg-subtle); }
+        h2.r-title { font-family: var(--font-display); font-size: clamp(21px, 3vw, 26px); font-weight: 750; letter-spacing: -0.02em; margin-bottom: 6px; }
+        .r-sub { font-size: 13.5px; color: var(--fg-muted); }
+
+        /* identity grid */
+        .id-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px 28px; margin-top: 24px; }
+        .id-item .k { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 3px; }
+        .id-item .v { font-size: 14.5px; font-weight: 550; }
+        .id-item .v small { display: block; color: var(--fg-muted); font-weight: 450; font-size: 12px; margin-top: 2px; }
+
+        /* score hero */
+        .score-hero { display: flex; align-items: center; gap: clamp(24px, 5vw, 56px); flex-wrap: wrap; }
+        .score-big { display: flex; align-items: baseline; gap: 10px; }
+        .score-big .num { font-family: var(--font-display); font-size: clamp(64px, 10vw, 96px); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--accent); }
+        .score-big .den { font-size: 20px; color: var(--fg-subtle); font-weight: 600; }
+        .band-chip {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 999px;
+            background: var(--accent); color: var(--accent-on);
+            font-weight: 750; font-size: 15px; letter-spacing: -0.01em;
+        }
+        .band-note { margin-top: 10px; font-size: 13px; color: var(--fg-muted); }
+        .band-strip { margin-top: 28px; }
+        .band-track { display: flex; gap: 2px; height: 14px; border-radius: 8px; overflow: hidden; position: relative; }
+        .band-seg { flex: 1; background: color-mix(in srgb, var(--accent) 10%, var(--bg-subtle)); position: relative; }
+        .band-seg.on { background: var(--accent); }
+        .band-labels { display: flex; gap: 2px; margin-top: 8px; }
+        .band-labels div { flex: 1; text-align: center; font-size: 11px; color: var(--fg-subtle); font-weight: 600; }
+        .band-labels div.on { color: var(--accent); }
+        .band-marker { position: absolute; top: -7px; width: 2.5px; height: 28px; background: var(--fg); border-radius: 2px; }
+        .band-marker::after { content: attr(data-v); position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 800; color: var(--fg); white-space: nowrap; }
+
+        /* pillar rows */
+        .pillar-row { padding: 20px 0; border-top: 1px solid var(--border); }
+        .pillar-row:first-of-type { border-top: 0; padding-top: 8px; }
+        .pillar-head { display: grid; grid-template-columns: minmax(140px, 220px) 1fr 76px; gap: 18px; align-items: center; }
+        .pillar-head .nm { font-weight: 750; font-size: 15px; }
+        .pillar-head .nm small { display: block; font-weight: 500; color: var(--fg-muted); font-size: 11.5px; }
+        .pbar { height: 10px; border-radius: 6px; background: color-mix(in srgb, var(--accent) 12%, transparent); overflow: hidden; }
+        .pbar > i { display: block; height: 100%; border-radius: 6px; background: var(--accent); }
+        .pillar-head .sc { font-size: 13.5px; font-weight: 750; text-align: right; font-variant-numeric: tabular-nums; }
+        .pillar-comment { margin-top: 12px; font-size: 13.5px; color: var(--fg-muted); line-height: 1.65; max-width: 74ch; }
+
+        /* criteria heatmap */
+        .crit-legend { display: flex; gap: 14px; flex-wrap: wrap; margin: 22px 0 18px; font-size: 12px; color: var(--fg-muted); }
+        .crit-legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .lv-dot { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+        .heat { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .heat-cell {
+            border-radius: 10px; padding: 10px 10px 9px; min-height: 74px;
+            display: flex; flex-direction: column; justify-content: space-between; gap: 4px;
+            border: 1px solid var(--border); cursor: default; position: relative;
+        }
+        .heat-cell .cid { font-family: var(--font-mono); font-size: 11px; font-weight: 700; opacity: .85; }
+        .heat-cell .cnm { font-size: 11.5px; font-weight: 600; line-height: 1.3; }
+        .heat-cell .clv { font-family: var(--font-display); font-size: 20px; font-weight: 800; line-height: 1; align-self: flex-end; }
+        .lv0 { background: var(--bg-subtle); color: var(--fg-subtle); }
+        .lv1 { background: color-mix(in srgb, var(--accent) 13%, var(--bg-elev)); color: var(--fg); border-color: transparent; }
+        .lv2 { background: color-mix(in srgb, var(--accent) 30%, var(--bg-elev)); color: var(--fg); border-color: transparent; }
+        .lv3 { background: color-mix(in srgb, var(--accent) 62%, var(--bg-elev)); color: var(--accent-on); border-color: transparent; }
+        .lv4 { background: var(--accent); color: var(--accent-on); border-color: transparent; }
+        .heat-cell .tip {
+            display: none; position: absolute; z-index: 5; bottom: calc(100% + 8px); left: 0;
+            width: min(320px, 74vw); background: var(--fg); color: var(--bg);
+            border-radius: 10px; padding: 10px 12px; font-size: 12px; line-height: 1.5; font-weight: 450;
+            box-shadow: 0 8px 28px rgba(0,0,0,.22);
+        }
+        .heat-cell:hover .tip, .heat-cell:focus .tip { display: block; }
+        .heat-cell:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+        @media (max-width: 760px) { .heat { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 480px) { .heat { grid-template-columns: repeat(2, 1fr); } }
+
+        /* environment */
+        .env-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; margin-top: 24px; }
+        @media (max-width: 760px) { .env-grid { grid-template-columns: 1fr; } }
+        .rt-row { display: grid; grid-template-columns: minmax(120px, 200px) 1fr 52px; gap: 14px; align-items: center; margin-bottom: 12px; }
+        .rt-row .nm { font-size: 13px; font-weight: 600; }
+        .rt-row .nm small { display: block; font-weight: 450; font-size: 11px; color: var(--fg-subtle); }
+        .rt-row .sc { font-size: 12.5px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; color: var(--fg-muted); }
+        .basis { font-size: 11.5px; color: var(--fg-subtle); margin-top: 6px; }
+        .metric-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+        .metric-chip {
+            border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; background: var(--bg);
+            min-width: 108px;
+        }
+        .metric-chip .v { font-family: var(--font-display); font-size: 19px; font-weight: 750; letter-spacing: -0.02em; }
+        .metric-chip .k { font-size: 11px; color: var(--fg-subtle); font-weight: 600; margin-top: 1px; }
+
+        /* trajectory */
+        .traj-wrap { margin-top: 8px; overflow-x: auto; }
+        .traj-svg text { font-family: var(--font-sans); }
+        .traj-delta { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: 13px; }
+        .traj-links { margin-top: 10px; font-size: 12.5px; color: var(--fg-muted); display: flex; gap: 14px; flex-wrap: wrap; }
+        .traj-links a { color: var(--accent); font-weight: 600; }
+        .traj-links a:hover { text-decoration: underline; }
+
+        .traj-timeline { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 12px; display: flex; flex-direction: column; gap: 7px; }
+        .tl-row { display: flex; gap: 12px; font-size: 12.5px; }
+        .tl-date { flex: none; font-family: var(--font-mono); color: var(--fg-subtle); font-size: 11.5px; padding-top: 1px; }
+        .tl-note { color: var(--fg-muted); }
+        .tl-note b { color: var(--accent); }
+
+        /* operator note */
+        .op-note { border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); background: var(--accent-soft); }
+        .op-note .diag-like { font-family: var(--font-display); font-size: clamp(16px, 2.4vw, 19px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.55; }
+        .op-note .byline { margin-top: 14px; font-size: 12.5px; color: var(--fg-muted); font-weight: 600; }
+
+        /* qualitative */
+        .diag {
+            border-left: 3px solid var(--accent); padding: 6px 0 6px 20px;
+            font-family: var(--font-display); font-size: clamp(17px, 2.4vw, 21px); font-weight: 650;
+            letter-spacing: -0.015em; line-height: 1.5; margin-top: 20px;
+        }
+        .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 30px; }
+        @media (max-width: 760px) { .qual-grid { grid-template-columns: 1fr; } }
+        .qual-col h3 { font-size: 13px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-subtle); margin-bottom: 14px; }
+        .s-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .s-list li { display: flex; gap: 10px; font-size: 13.5px; color: var(--fg-muted); line-height: 1.55; }
+        .s-list li::before { content: "◆"; color: var(--accent); font-size: 10px; margin-top: 4px; }
+        .imp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .imp-table td { padding: 8px 8px 8px 0; border-top: 1px solid var(--border); vertical-align: top; color: var(--fg-muted); }
+        .imp-table tr:first-child td { border-top: 0; }
+        .imp-table .t { font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); white-space: nowrap; }
+        .imp-table .g { font-weight: 700; color: var(--fg); white-space: nowrap; text-align: right; }
+        .chip-done {
+            display: inline-block; font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px;
+            background: var(--accent); color: var(--accent-on); margin-left: 6px; vertical-align: 1px;
+        }
+        .guide-box {
+            margin-top: 30px; padding: 20px 22px; border-radius: 14px;
+            background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+            font-size: 14px; line-height: 1.7; color: var(--fg);
+        }
+        .guide-box b { color: var(--accent); }
+
+        /* verification footer */
+        .verify-meta { font-size: 12px; color: var(--fg-subtle); line-height: 1.7; }
+        .verify-meta code { font-family: var(--font-mono); font-size: 11px; }
+
+        /* share CTA (local copy only) */
+        .cta-card { border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); background: var(--accent-soft); text-align: center; }
+        .cta-card .cta-title { font-family: var(--font-display); font-size: clamp(18px, 2.8vw, 23px); font-weight: 750; letter-spacing: -0.02em; }
+        .cta-card .cta-sub { margin: 10px auto 0; font-size: 13.5px; color: var(--fg-muted); line-height: 1.65; max-width: 62ch; }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+            padding: 12px 24px; border-radius: 999px;
+            background: var(--accent); color: var(--accent-on);
+            font-weight: 750; font-size: 14.5px; letter-spacing: -0.01em;
+            transition: transform .15s ease, opacity .15s ease;
+        }
+        .cta-btn:hover { transform: translateY(-1px); opacity: .92; }
+        .cta-note { margin-top: 12px; font-size: 11.5px; color: var(--fg-subtle); }
+
+        .footer { padding: 40px var(--section-px) 56px; text-align: center; font-size: 12.5px; color: var(--fg-subtle); }
+        .footer a { color: var(--fg-muted); }
+
+        .loading { text-align: center; padding: 120px 20px; color: var(--fg-subtle); font-size: 14px; }
+        @media print {
+            .site-header, .footer, .cta-card { display: none; }
+            .r-card { break-inside: avoid; border-color: #ccc; }
+            body { background: #fff; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a class="brand" href="https://akm.cmdspace.work">
+        <img class="brand-mark" src="https://akm.cmdspace.work/assets/logos/cmds-logo-round.png" alt="CMDS" width="28" height="28" onerror="this.style.display='none'">
+        <span>AKM Index</span>
+    </a>
+    <div class="header-actions">
+        <a class="back-link" href="https://akm.cmdspace.work/#board"><span class="en-only">Board ↗</span><span class="ko-only">평가 보드 ↗</span></a>
+        <button class="icon-btn" id="langToggle" aria-label="Toggle language"><span id="langLabel" style="font-size:12px;font-weight:500;">EN</span></button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+            <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+    </div>
+</header>
+
+<main class="report" id="app">
+    <div class="loading"><span class="en-only">Loading report…</span><span class="ko-only">리포트 로딩 중…</span></div>
+</main>
+
+<footer class="footer">
+    <span class="en-only">Scored with <a href="https://akm.cmdspace.work">AKM Index v1.0</a> — evidence-based, adversarially verified. © 2026 CMDSPACE</span>
+    <span class="ko-only"><a href="https://akm.cmdspace.work">AKM Index v1.0</a> 기반 — 증거 기반 · 적대적 검증 통과. © 2026 CMDSPACE</span>
+</footer>
+
+<!-- akm-eval 스킬이 치환: 마스킹 적용된 akm-report.json 내용 (JSON 내 `</` 는 `<\/` 로 이스케이프) -->
+<script id="akm-report-data" type="application/json">
+__AKM_REPORT_JSON__
+</script>
+
+<script>
+(function() {
+    'use strict';
+    const SITE = 'https://akm.cmdspace.work';
+    const RECEIPT_ID = '__RECEIPT_ID__';
+    const $ = (s, el=document) => el.querySelector(s);
+    const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const LV_NAMES = { ko: ['부재','임시','문서화','시스템화','자가개선'], en: ['Absent','Ad-hoc','Documented','Systematized','Self-improving'] };
+    const BANDS = ['M0','M1','M2','M3','M4'];
+
+    function biPair(obj, fallback) {
+        if (obj == null) return { ko: fallback ?? '', en: fallback ?? '' };
+        if (typeof obj === 'string') return { ko: obj, en: obj };
+        return { ko: obj.ko ?? obj.en ?? '', en: obj.en ?? obj.ko ?? '' };
+    }
+    function bi(obj) { // renders both spans; CSS shows the active one
+        const p = biPair(obj);
+        return `<span class="ko-only">${esc(p.ko)}</span><span class="en-only">${esc(p.en)}</span>`;
+    }
+
+    function trajChart(hist, s, a) {
+        // 두 형식 수용: ① 스크립트 생성(이전 회차만, id/link 포함) ② 제출자 self-report(현재 회차 포함, note·null-total 마일스톤 포함)
+        const scored = hist.filter(h => h.total != null);
+        const last = scored[scored.length - 1];
+        const includesCurrent = last && last.total === s.total && last.date === a.date;
+        const prev = includesCurrent ? scored.slice(0, -1) : scored;
+        const pts = [...prev.map(h => ({date: h.date, total: h.total, band: h.band, id: h.id, link: h.hasDetail})),
+                     {date: a.date, total: s.total, band: s.band, cur: true}];
+        const W = 640, H = 230, L = 44, R = 20, T = 26, B = 34;
+        const iw = W - L - R, ih = H - T - B;
+        const x = i => L + (pts.length === 1 ? iw / 2 : i * iw / (pts.length - 1));
+        const y = v => T + ih - (v / 100) * ih;
+        const grid = [20, 40, 60, 80].map(v =>
+            `<line x1="${L}" y1="${y(v)}" x2="${W - R}" y2="${y(v)}" stroke="var(--border)" stroke-width="1"/>
+             <text x="${L - 8}" y="${y(v) + 4}" text-anchor="end" font-size="10" fill="var(--fg-subtle)">${v}</text>`).join('');
+        const bandLbl = ['M0','M1','M2','M3','M4'].map((b, i) =>
+            `<text x="${W - R + 2}" y="${y(i * 20 + 10) + 3}" font-size="9" font-weight="700" fill="var(--fg-subtle)">${b}</text>`).join('');
+        const line = pts.length > 1 ? `<polyline points="${pts.map((p, i) => `${x(i)},${y(p.total)}`).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>` : '';
+        const dots = pts.map((p, i) => `
+            <circle cx="${x(i)}" cy="${y(p.total)}" r="${p.cur ? 6 : 4.5}" fill="${p.cur ? 'var(--accent)' : 'var(--bg-elev)'}" stroke="var(--accent)" stroke-width="2.5"/>
+            <text x="${x(i)}" y="${y(p.total) - 12}" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--fg)">${p.total.toFixed(1)}</text>
+            <text x="${x(i)}" y="${H - 12}" text-anchor="${i === 0 ? 'start' : i === pts.length - 1 ? 'end' : 'middle'}" font-size="10.5" fill="var(--fg-muted)">${esc(p.date)}</text>`).join('');
+        const delta = pts.length > 1 ? pts[pts.length - 1].total - pts[0].total : 0;
+        const links = pts.filter(p => !p.cur && p.link).map((p, i) =>
+            `<a href="${SITE}/report.html?id=${esc(p.id)}"><span class="ko-only">${esc(p.date)} 회차 리포트 →</span><span class="en-only">${esc(p.date)} report →</span></a>`).join('');
+        return `
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">Score Trajectory</span><span class="ko-only">성장 궤적</span>
+                <span class="traj-delta">${delta >= 0 ? '▲ +' : '▼ '}${delta.toFixed(1)} <span style="font-weight:600;color:var(--fg-muted)"><span class="ko-only">${pts.length}회차 누적</span><span class="en-only">over ${pts.length} rounds</span></span></span></div>
+            <div class="traj-wrap"><svg class="traj-svg" viewBox="0 0 ${W} ${H}" style="min-width:480px;width:100%;height:auto;">${grid}${bandLbl}${line}${dots}</svg></div>
+            ${links ? `<div class="traj-links">${links}</div>` : ''}
+            ${hist.some(h => h.note) ? `<div class="traj-timeline">${hist.map(h => `
+                <div class="tl-row"><span class="tl-date">${esc(h.date)}</span><span class="tl-note">${esc(h.note || '')}${h.total != null ? ` <b>· ${h.total}</b>` : ''}</span></div>`).join('')}
+                ${includesCurrent ? '' : `<div class="tl-row"><span class="tl-date">${esc(a.date)}</span><span class="tl-note"><span class="ko-only">현재 회차</span><span class="en-only">current round</span> <b>· ${s.total}</b></span></div>`}
+            </div>` : ''}
+        </section>`;
+    }
+
+    function render(d) {
+        const s = d.scores, q = d.qualitative, env = d.environment, sub = d.subject, a = d.assessment;
+        const bandIdx = BANDS.indexOf(s.band);
+        const emailShown = sub.consent && sub.consent.showEmail ? sub.email : (sub.email ? sub.email.replace(/^(..).*(@.*)$/, '$1•••$2') : '—');
+        const nameShown = sub.consent && sub.consent.showRealName ? sub.name : sub.nickname;
+        const ver = a.verification || {};
+        const receipt = (RECEIPT_ID && RECEIPT_ID.indexOf('__') !== 0) ? RECEIPT_ID : '';
+
+        const pillars = Object.entries(s.pillars).map(([k, p]) => {
+            const pct = Math.round(p.score / p.max * 100);
+            const comment = q.pillarComments && q.pillarComments[k];
+            return `<div class="pillar-row">
+                <div class="pillar-head">
+                    <div class="nm">${k} <small>${bi(p.name)}</small></div>
+                    <div class="pbar"><i style="width:${pct}%"></i></div>
+                    <div class="sc">${p.score} / ${p.max}</div>
+                </div>
+                ${comment ? `<div class="pillar-comment">${esc(comment)}</div>` : ''}
+            </div>`;
+        }).join('');
+
+        const heat = s.criteria.map(c => `
+            <div class="heat-cell lv${c.level}" tabindex="0">
+                <div><div class="cid">${esc(c.id)}</div><div class="cnm">${bi(c.name)}</div></div>
+                <div class="clv">${c.level}</div>
+                ${c.note ? `<div class="tip"><b>${esc(c.id)}</b> · ${esc(c.note)}</div>` : ''}
+            </div>`).join('');
+
+        const legend = [0,1,2,3,4].map(l =>
+            `<span><span class="lv-dot lv${l}"></span>${l} <span class="ko-only">${LV_NAMES.ko[l]}</span><span class="en-only">${LV_NAMES.en[l]}</span></span>`).join('');
+
+        const runtimes = env.runtimes.map(r => {
+            const pct = Math.round((r.usageShare ?? 0) * 100);
+            return `<div class="rt-row">
+                <div class="nm">${esc(r.name)}<small>${esc(r.role)}</small></div>
+                <div class="pbar"><i style="width:${pct}%"></i></div>
+                <div class="sc">${pct}%</div>
+            </div>`;
+        }).join('');
+
+        const metrics = (env.metrics || []).map(m =>
+            `<div class="metric-chip"><div class="v">${esc(m.value)}</div><div class="k">${bi(m.label)}</div></div>`).join('');
+
+        const strengths = q.strengths.map(x => `<li><span>${bi(x)}</span></li>`).join('');
+        const imps = q.improvements.map(x => `
+            <tr><td class="t">${esc(x.target)}</td>
+                <td>${bi(x.action)}${x.applied ? `<span class="chip-done">✓ ${esc(x.applied)}</span>` : ''}</td>
+                <td class="g">+${x.gain}</td></tr>`).join('');
+
+        const adj = (ver.adjustments || []).map(x => `${x.criterion} ${x.from}→${x.to}`).join(' · ');
+
+        $('#app').innerHTML = `
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">Assessment Report · Local Copy</span><span class="ko-only">평가 리포트 · 로컬 발급본</span><span class="rid">${esc(d.id)} · rubric v${esc(a.rubricVersion)}</span></div>
+            <h2 class="r-title">${esc(nameShown)}${sub.nickname && nameShown !== sub.nickname ? ` <span style="color:var(--fg-subtle);font-weight:500;">· ${esc(sub.nickname)}</span>` : ''}</h2>
+            <div class="r-sub">${esc(sub.affiliation || '')}</div>
+            <div class="id-grid">
+                <div class="id-item"><div class="k"><span class="en-only">Assessed</span><span class="ko-only">평가 일시</span></div><div class="v">${esc(a.date)}</div></div>
+                <div class="id-item"><div class="k">Email</div><div class="v">${esc(emailShown)}</div></div>
+                <div class="id-item"><div class="k"><span class="en-only">Device</span><span class="ko-only">평가 디바이스</span></div><div class="v">${esc(env.device)}<small>${esc(env.os)}</small></div></div>
+                <div class="id-item"><div class="k"><span class="en-only">Knowledge base</span><span class="ko-only">지식 기반</span></div><div class="v">${esc(env.knowledgeBase.type)}<small>${env.knowledgeBase.notes.toLocaleString()} md</small></div></div>
+                <div class="id-item"><div class="k"><span class="en-only">Mode</span><span class="ko-only">평가 방식</span></div><div class="v">${bi(a.modeLabel)}${a.durationMinutes ? `<small><span class="ko-only">소요 약 ${a.durationMinutes}분</span><span class="en-only">~${a.durationMinutes} min</span></small>` : ''}</div></div>
+                <div class="id-item"><div class="k"><span class="en-only">Evaluator</span><span class="ko-only">평가자</span></div><div class="v">${esc(a.evaluator)}</div></div>
+            </div>
+        </section>
+
+        <section class="r-card">
+            <div class="score-hero">
+                <div>
+                    <div class="score-big"><span class="num">${s.total.toFixed(1)}</span><span class="den">/ 100</span></div>
+                </div>
+                <div>
+                    <span class="band-chip">${esc(s.band)} · ${bi(s.bandLabel)}</span>
+                    <div class="band-note"><span class="ko-only">레벨 4 달성 ${s.criteria.filter(c=>c.level===4).length}개 · 레벨 2 이하 ${s.criteria.filter(c=>c.level<=2).length}개</span><span class="en-only">${s.criteria.filter(c=>c.level===4).length} criteria at level 4 · ${s.criteria.filter(c=>c.level<=2).length} at level ≤2</span></div>
+                </div>
+            </div>
+            <div class="band-strip">
+                <div class="band-track">
+                    ${BANDS.map((b,i)=>`<div class="band-seg${i===bandIdx?' on':''}"></div>`).join('')}
+                    <div class="band-marker" style="left:${s.total}%" data-v="${s.total.toFixed(1)}"></div>
+                </div>
+                <div class="band-labels">${BANDS.map((b,i)=>`<div class="${i===bandIdx?'on':''}">${b}</div>`).join('')}</div>
+            </div>
+        </section>
+
+        ${d.history && d.history.length ? trajChart(d.history, s, a) : ''}
+
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">Pillar Scores & Comments</span><span class="ko-only">필러별 점수 · 정성 코멘트</span></div>
+            ${pillars}
+        </section>
+
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">25-Criterion Heatmap</span><span class="ko-only">25개 기준 히트맵</span></div>
+            <div class="r-sub"><span class="ko-only">셀에 마우스를 올리면 판정 근거·감점 사유가 보입니다.</span><span class="en-only">Hover a cell for the evidence / deduction note.</span></div>
+            <div class="crit-legend">${legend}</div>
+            <div class="heat">${heat}</div>
+        </section>
+
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">Environment & Agent Usage</span><span class="ko-only">환경 · 에이전트 사용 지표</span></div>
+            <div class="env-grid">
+                <div>
+                    ${runtimes}
+                    <div class="basis">${bi(env.usageBasis)}</div>
+                </div>
+                <div class="metric-chips">${metrics}</div>
+            </div>
+        </section>
+
+        <section class="r-card">
+            <div class="r-eyebrow"><span class="en-only">Qualitative Assessment</span><span class="ko-only">정성 평가</span></div>
+            <div class="diag">${bi(q.diagnosis)}</div>
+            <div class="qual-grid">
+                <div class="qual-col"><h3><span class="en-only">Top strengths</span><span class="ko-only">강점 Top 3</span></h3><ul class="s-list">${strengths}</ul></div>
+                <div class="qual-col"><h3><span class="en-only">Improvement roadmap</span><span class="ko-only">개선 로드맵 (예상 상승폭)</span></h3><table class="imp-table">${imps}</table></div>
+            </div>
+            <div class="guide-box"><b><span class="en-only">Guide — </span><span class="ko-only">가이드 — </span></b>${bi(q.guide)}</div>
+        </section>
+
+        ${d.operatorComment ? `
+        <section class="r-card op-note">
+            <div class="r-eyebrow"><span class="en-only">Operator's Note</span><span class="ko-only">구요한 코멘터리</span></div>
+            <div class="diag-like">${bi(d.operatorComment)}</div>
+            <div class="byline">— ${esc(d.operatorComment.author || '구요한 (Yohan Koo) · CMDSPACE')}${d.operatorComment.date ? ` · ${esc(d.operatorComment.date)}` : ''}</div>
+        </section>` : ''}
+
+        <section class="r-card">
+            <div class="verify-meta">
+                <span class="ko-only">검증: 적대적 패널 ${ver.panels ?? '—'}개 · 스팟체크 ${ver.spotChecks ?? '—'}건${adj ? ` · 조정 <code>${esc(adj)}</code>` : ''} · 판정 규칙: 증거 없으면 상한 1 / 애매하면 낮은 쪽 / L4는 기록 필수</span>
+                <span class="en-only">Verification: ${ver.panels ?? '—'} adversarial panels · ${ver.spotChecks ?? '—'} spot-checks${adj ? ` · adjustments <code>${esc(adj)}</code>` : ''} · Rules: evidence-or-cap-1 / conservative ties / level 4 requires records</span>
+                ${receipt ? `<div style="margin-top:6px;">
+                    <span class="ko-only">제출 영수증 <code>${esc(receipt)}</code> — 이 파일은 AKM 운영팀 제출 직후 로컬에서 발급된 개인 사본입니다. 공식 보드: <a href="${SITE}" style="color:var(--fg-muted);text-decoration:underline;">akm.cmdspace.work</a></span>
+                    <span class="en-only">Submission receipt <code>${esc(receipt)}</code> — this file is a personal copy issued locally right after submission to the AKM team. Official board: <a href="${SITE}" style="color:var(--fg-muted);text-decoration:underline;">akm.cmdspace.work</a></span>
+                </div>` : ''}
+            </div>
+        </section>
+
+        <section class="r-card cta-card">
+            <div class="cta-title"><span class="ko-only">당신의 시스템은 몇 점일까요?</span><span class="en-only">How would your system score?</span></div>
+            <div class="cta-sub">
+                <span class="ko-only">AKM Index는 에이전트 지식관리 시스템의 성숙도를 5개 필러 · 25개 기준으로 측정하는 공개 루브릭입니다. 이 리포트의 주인공처럼, 에이전트에 스킬을 설치하면 10-60분 만에 증거 기반 평가를 받을 수 있습니다.</span>
+                <span class="en-only">The AKM Index is a public rubric that measures agentic knowledge-management maturity across 5 pillars and 25 criteria. Install the skill on your agent and get an evidence-based assessment in 10-60 minutes — just like the owner of this report.</span>
+            </div>
+            <a class="cta-btn" href="${SITE}" target="_blank" rel="noopener"><span class="ko-only">내 시스템 평가하기 — akm.cmdspace.work</span><span class="en-only">Assess my system — akm.cmdspace.work</span> →</a>
+            <div class="cta-note"><span class="ko-only">평가 스킬 다운로드 · 루브릭 전문 · 공개 보드 모두 위 링크에서.</span><span class="en-only">Skill download, full rubric, and the public board — all at the link above.</span></div>
+        </section>`;
+        document.title = `AKM Report — ${nameShown}`;
+    }
+
+    // lang / theme
+    function applyLang(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dataset.lang = lang;
+        $('#langLabel').textContent = lang === 'en' ? '한' : 'EN';
+        try { localStorage.setItem('cmds-lang', lang); } catch (e) {}
+    }
+    function applyTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        try { localStorage.setItem('cmds-theme', theme); } catch (e) {}
+        $('#themeIcon').innerHTML = theme === 'dark'
+            ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+            : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+    }
+    let storedLang = null, storedTheme = null;
+    try { storedLang = localStorage.getItem('cmds-lang'); storedTheme = localStorage.getItem('cmds-theme'); } catch (e) {}
+    $('#langToggle').addEventListener('click', () => applyLang(document.documentElement.dataset.lang === 'en' ? 'ko' : 'en'));
+    $('#themeToggle').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light'));
+    applyLang(storedLang || 'ko');
+    applyTheme(storedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+
+    // load — embedded data (no server needed; works from file://)
+    let d = null;
+    try {
+        const raw = document.getElementById('akm-report-data').textContent.trim();
+        if (raw.indexOf('__AKM_REPORT') === 0) throw new Error('placeholder not replaced');
+        d = JSON.parse(raw);
+    } catch (e) {
+        $('#app').innerHTML = '<div class="loading"><span class="ko-only">리포트 데이터가 임베드되지 않았습니다. akm-eval 스킬 7단계에서 AKM_REPORT_JSON 플레이스홀더를 치환해야 합니다.</span><span class="en-only">No report data embedded. Step 7 of the akm-eval skill must replace the AKM_REPORT_JSON placeholder.</span></div>';
+    }
+    if (d) render(d);
+})();
+</script>
+</body>
+</html>
