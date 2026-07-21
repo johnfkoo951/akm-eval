@@ -16,6 +16,7 @@ description: "Self-assess your agentic knowledge management system against the A
 ## 필독 순서
 1. `references/rubric.md` — 25개 기준의 앵커 전문. **채점 전 반드시 전문을 읽을 것.**
 2. `references/report-schema.md` — 산출 JSON 스키마와 예시.
+3. `references/runtime-paths.md` — 에이전트 런타임별 세션·스킬·설정 경로 레지스트리. **1단계 증거 수집 전 읽을 것** — 사용자가 Claude Code 외 런타임을 잘 쓰고 있는데 평가에 반영되지 않는 누락을 막는다.
 
 ## 실행 절차
 
@@ -25,7 +26,7 @@ description: "Self-assess your agentic knowledge management system against the A
 ### 1. 증거 수집 (파일시스템 접근 가능한 범위에서, 10-60분)
 **시작 시각을 기록하라** (`date` 실행) — 마지막에 `assessment.durationMinutes`(시작→리포트 완성, 분 단위 정수)로 리포트에 넣는다.
 다음 8개 영역을 조사한다. **정량 사실(개수·날짜·크기)과 파일 경로**를 기록할 것:
-① 에이전트 지시 파일 전수(CLAUDE.md/AGENTS.md/GEMINI.md/.cursorrules 등)와 스코프 배치 ② 지식 저장소 구조·명명 규칙·frontmatter/메타데이터 스키마 ③ 하네스 설정(훅·권한 allow/deny·MCP·메모리 파일) ④ 스킬/커맨드/자동화 목록 ⑤ 멀티 런타임 설정(~/.codex, ~/.gemini, ~/.cursor 등 — 있는 것만) ⑥ git/백업 커버리지(git status 실측, Time Machine 등) ⑦ 운영 루프(최근 30일 데일리/위클리 실물 개수, 인박스 규모, 에이전트 산출물 위치) ⑧ 검색 인프라(인덱스 유무·문서 수·갱신 주기).
+① 에이전트 지시 파일 전수(CLAUDE.md/AGENTS.md/GEMINI.md/.cursorrules 등)와 스코프 배치 ② 지식 저장소 구조·명명 규칙·frontmatter/메타데이터 스키마 ③ 하네스 설정(훅·권한 allow/deny·MCP·메모리 파일) ④ 스킬/커맨드/자동화 목록 ⑤ 멀티 런타임 설정 — `references/runtime-paths.md`의 경로 레지스트리로 홈·프로젝트 닷폴더를 탐지한다(~/.codex, ~/.gemini, ~/.grok, ~/.hermes, ~/.openclaw 등 — 있는 것만, 시크릿 파일은 존재만 기록). 세션 정본이 SQLite인 런타임은 파일 크기·mtime으로 활동을 인정한다 ⑥ git/백업 커버리지(git status 실측, Time Machine 등) ⑦ 운영 루프(최근 30일 데일리/위클리 실물 개수, 인박스 규모, 에이전트 산출물 위치) ⑧ 검색 인프라(인덱스 유무·문서 수·갱신 주기).
 
 디바이스 정보: macOS는 `system_profiler SPHardwareDataType | head -15`, 그 외 OS는 상응 명령. 에이전트 사용 비율: 산출물 폴더·세션 로그 개수 기준으로 추정하고 산정 근거를 명시.
 
