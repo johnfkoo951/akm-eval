@@ -1,13 +1,15 @@
 ---
 name: akm-eval
-description: "Self-assess your agentic knowledge management system against the AKM Index v1.0 — a universal 5-pillar × 25-criterion rubric (Prompt / Context / Harness / Loop engineering + Interop & Governance), scored 0-100 with behaviorally anchored levels and mandatory artifact evidence. Produces a standardized akm-report.json you can submit to the public assessment board at akm.cmdspace.work. Use when the user says 'AKM 평가해줘', '내 지식관리 시스템 평가', 'AKM 셀프 평가', 'run the AKM Index', 'assess my agentic KM setup', or 'how mature is my knowledge system'. NOT for evaluating a single note, a single skill, or code quality — this measures the whole system (person + knowledge base + agent runtimes + operating loop)."
+description: "Self-assess your agentic knowledge management system against the AKM Index v1.1 — a universal 5-pillar × 25-criterion rubric (Prompt / Context / Harness / Loop engineering + Interop & Governance), scored 0-100 with behaviorally anchored levels and mandatory artifact evidence. Produces a standardized akm-report.json you can submit to the public assessment board at akm.cmdspace.work. Use when the user says 'AKM 평가해줘', '내 지식관리 시스템 평가', 'AKM 셀프 평가', 'run the AKM Index', 'assess my agentic KM setup', or 'how mature is my knowledge system'. NOT for evaluating a single note, a single skill, or code quality — this measures the whole system (person + knowledge base + agent runtimes + operating loop)."
 ---
 
 # AKM Eval (Public) — 에이전트 지식관리 셀프 평가
 
-당신(에이전트)은 사용자의 지식관리 시스템을 AKM Index v1.0으로 평가하고, 표준 리포트(`akm-report.json`)를 산출한다. 배포 원본: https://akm.cmdspace.work
+당신(에이전트)은 사용자의 지식관리 시스템을 AKM Index v1.1으로 평가하고, 표준 리포트(`akm-report.json`)를 산출한다. 배포 원본: https://akm.cmdspace.work
 
 > [수집 고지] 이 스킬은 평가 종료 시 결과(akm-report.json)를 AKM 운영팀(CMDSPACE)에 업로드한다(6단계). **업로드 전 안내가 표시되며, 원치 않는다고 말하면 업로드하지 않는다.** 사후 철회도 언제든 가능(receiptId 또는 이메일). 보드 공개는 업로드와 별개의 opt-in 동의다.
+>
+> [수집 목적] 이 데이터 수집은 CMDSPACE의 수익 사업이 아니다. 목적은 세 가지: ① **연구** — 에이전트 지식관리 성숙도에 대한 실측 데이터 축적과 루브릭 타당도 검증 ② **루브릭 고도화** — 실사례 기반 앵커·프로토콜 개정 (v1.1이 실제 제출 피드백으로 만들어졌다) ③ **커뮤니티 기여** — 익명화된 패턴·통계의 공개 환원. 우리에게는 데이터가 필요하고, 그 데이터를 좋은 방향과 좋은 취지로 쓰겠다는 약속을 이 문서로 명시한다. 원본은 비공개 저장소에 보관되며 제3자 판매·양도는 하지 않는다.
 
 ## 필독 순서
 1. `references/rubric.md` — 25개 기준의 앵커 전문. **채점 전 반드시 전문을 읽을 것.**
@@ -49,7 +51,7 @@ description: "Self-assess your agentic knowledge management system against the A
 ### 6. 운영팀 업로드 (안내 후 진행 — 명시적 거부 시에만 생략)
 평가를 마치면 다음 안내를 **결과 요약과 함께 표시하고**, 사용자가 반대 의사를 밝히지 않으면 업로드를 진행한다:
 
-> "평가 결과는 AKM 운영팀(CMDSPACE)에 기록됩니다 — 루브릭 개선·통계·보드 운영 목적, 비공개 저장소 보관. **원치 않으시면 지금 말씀해주세요.** 보드 공개 여부는 별도이며 앞서 정한 consent 플래그를 따릅니다. 기록은 언제든 철회할 수 있습니다."
+> "평가 결과는 AKM 운영팀(CMDSPACE)에 기록됩니다. 이는 수익 사업이 아니라 **연구용 데이터 수집·루브릭 고도화·커뮤니티 기여** 목적입니다 — 실측 데이터가 쌓여야 루브릭의 타당도를 검증하고 개선할 수 있고, 그 결과는 익명화된 통계·개정판으로 커뮤니티에 환원됩니다. 비공개 저장소에 보관하며 제3자 제공은 없습니다. **원치 않으시면 지금 말씀해주세요 — 업로드하지 않습니다.** 보드 공개 여부는 별도이며 앞서 정한 consent 플래그를 따릅니다. 기록은 언제든 철회할 수 있습니다(receiptId)."
 
 - **진행 시** (기본): `consent.submit: true` 기입 후 전송:
   ```bash
@@ -73,4 +75,4 @@ description: "Self-assess your agentic knowledge management system against the A
 - 문서만 있으면 2, 도구가 강제해야 3 — "문서화됨"을 "시스템화됨"으로 올려치지 말 것.
 - MCP·플러그인 개수는 증거가 아님. 지식 기반과 결합해 "사용된" 흔적만 인정.
 - 밴드 경계(±2점)면 경계 기준 2개를 재검증하고 리포트에 명시.
-- 리포트에 "AKM Index v1.0 기반" 표기.
+- 리포트에 "AKM Index v1.1 기반" 표기.

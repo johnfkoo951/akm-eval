@@ -1,9 +1,9 @@
 # AKM Eval — 에이전트 지식관리 셀프 평가 스킬
 
-> **AKM Index v1.0**으로 "내 지식관리 시스템이 AI 에이전트와 함께 얼마나 성숙하게 굴러가는가"를 0–100점으로 측정하는 Claude Code 스킬.
+> **AKM Index v1.1**으로 "내 지식관리 시스템이 AI 에이전트와 함께 얼마나 성숙하게 굴러가는가"를 0–100점으로 측정하는 Claude Code 스킬.
 > 공식 사이트: **https://akm.cmdspace.work** · 참여 안내: **https://akm.cmdspace.work/submit.html**
 
-[![AKM Index](https://img.shields.io/badge/AKM%20Index-v1.0-134538)](https://akm.cmdspace.work)
+[![AKM Index](https://img.shields.io/badge/AKM%20Index-v1.1-134538)](https://akm.cmdspace.work)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 무엇을 측정하나
@@ -71,7 +71,7 @@ AKM 평가해줘     # or: "run the AKM Index"
 akm-eval/
 ├── SKILL.md                      # 평가 실행 절차 (에이전트용)
 └── references/
-    ├── rubric.md                 # AKM Index v1.0 루브릭 전문 (한국어)
+    ├── rubric.md                 # AKM Index v1.1 루브릭 전문 (한국어)
     ├── rubric-en.md              # 영문판
     └── report-schema.md          # akm-report.json 스키마 v1.0 + 제출 API
 ```
@@ -84,10 +84,10 @@ akm-eval/
 
 ## English Summary
 
-**AKM Eval** self-assesses your agentic knowledge management system against the **AKM Index v1.0** — 5 pillars × 25 criteria, 0–100 with behaviorally anchored levels; every point requires artifact evidence. Install with `git clone https://github.com/johnfkoo951/akm-eval.git ~/.claude/skills/akm-eval`, then say **"run the AKM Index"** in a fresh Claude Code session. At the end you'll be notified before results are uploaded to the operations team — nothing is sent if you object, and board publication is a separate opt-in with consent flags. Full English rubric: [`references/rubric-en.md`](references/rubric-en.md). Calibration baseline (author's own system, scored honestly at 72.0/M3): [report](https://akm.cmdspace.work/report.html?id=cmds-2026-07).
+**AKM Eval** self-assesses your agentic knowledge management system against the **AKM Index v1.1** — 5 pillars × 25 criteria, 0–100 with behaviorally anchored levels; every point requires artifact evidence. Install with `git clone https://github.com/johnfkoo951/akm-eval.git ~/.claude/skills/akm-eval`, then say **"run the AKM Index"** in a fresh Claude Code session. At the end you'll be notified before results are uploaded to the operations team — nothing is sent if you object, and board publication is a separate opt-in with consent flags. Full English rubric: [`references/rubric-en.md`](references/rubric-en.md). Calibration baseline (author's own system, scored honestly at 72.0/M3): [report](https://akm.cmdspace.work/report.html?id=cmds-2026-07).
 
 ## 라이선스·표기
 
-MIT. 루브릭을 인용·개작해 쓸 때 **"Based on AKM Index v1.0 (akm.cmdspace.work)"** 표기를 권장합니다.
+MIT. 루브릭을 인용·개작해 쓸 때 **"Based on AKM Index v1.1 (akm.cmdspace.work)"** 표기를 권장합니다.
 
 만든 사람: [구요한 (Yohan Koo)](https://cmdspace.work) — CMDSPACE. 문의: Cmdspace.contact@gmail.com

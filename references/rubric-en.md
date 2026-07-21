@@ -1,4 +1,4 @@
-# AKM Index v1.0 — Agentic Knowledge Management Evaluation Framework
+# AKM Index v1.1 — Agentic Knowledge Management Evaluation Framework
 
 > **One-line Summary** — A universal evaluation scale that measures **how well an individual's or organization's knowledge management system is designed and operated to run together with AI agents** — 5 pillars × 25 criteria, scored out of 100. Every score requires artifact evidence (files, configurations, logs).
 
@@ -54,6 +54,8 @@ All three of the following must exist for a system to be evaluable. If any one i
 | **4** | Self-improving | The system itself is measured, and there is a **recorded case** of that feedback leading to updated rules, prompts, or structures |
 
 > **Evidence standard for Level 4** — Level 4 does not mean "lots of automation." It requires **"traces of the system fixing the system"** — e.g., a commit where a retrospective led to a CLAUDE.md revision, a record of an agent failure log leading to a new hook, a quarterly prompt audit document. Without such traces, the ceiling is 3 no matter how sophisticated the setup.
+>
+> **Two forms of observation (v1.1)**: even where an individual anchor exemplifies "measurement, ratios, or frequencies," the essence of Level 4 is a **recorded closed feedback loop**. Quantitative metrics (write-back rate, hit rate, etc.) and **dated qualitative records** (incident→cause→fix→prevention chains, recorded retrospectives leading to revisions) are accepted as equal evidence. For single-person systems in particular, N incident-based improvement records are equivalent to periodic instrumentation — building dashboards nobody will read is not what this rubric asks for.
 
 ### 2.3 Score Calculation
 
@@ -117,6 +119,8 @@ Core question: Among dozens of instruction assets, are triggers designed so the 
 | 4 | Routing failures (wrong skill fired, skill not fired) are logged and collected, with cases of description revisions that followed |
 
 Evidence examples: trigger phrases in skill descriptions; differentiator phrasing of the "For X use Y instead" kind.
+
+> **Equivalent path (v1.1)**: systems whose governance forbids editing descriptions directly (e.g., an immutable-originals policy for imported assets) may present a **central routing registry** — triggers, negative triggers, and differentiators managed outside the originals and consulted by the agent — as equal evidence. Anchor examples are examples only (§1.3 tool neutrality).
 
 ### P4. Exemplars & Counter-examples
 
@@ -285,6 +289,8 @@ Core question: Are subagents, background jobs, and schedules put to use — and 
 **Definition**: the degree to which the capture → process → develop → publish → review cycle **actually repeats** as a human+agent division of labor, with deliverables feeding back to strengthen the system (compounding).
 
 > **Important: this pillar alone weighs "evidence of operation" over "design"** — Level 3 or higher on the L pillar strictly requires **recurring artifacts dated within the last 30 days** (daily notes, weekly reviews, processing logs). A beautiful pipeline document with no recent traces of operation caps at 2.
+>
+> **Planned pause (v1.1)**: if a cause record **dated before the interruption began** exists (vacation note, outage log, etc.) and artifacts prove the loop resumed with zero manual repair, that period is excluded from the execution-rate denominator (up to 14 days within the 30-day window). Retroactive claims are not accepted. This clause evaluates **resilience**, not raw uptime.
 
 ### L1. Defined Pipeline
 
@@ -364,6 +370,8 @@ Core question: Is a single canonical context reused across multiple agent runtim
 | 3 | A shared canonical source + per-runtime adapters (symlinks, references, conversion scripts) so that all major runtimes see the same context. Per-runtime capability differences are documented |
 | 4 | The onboarding procedure for adding a new runtime is documented and validated, and cross-runtime drift checks run periodically |
 
+> **Primary-runtime-focused users (v1.1)**: even if a secondary runtime's actual usage share is low, an adapter that is documented and has **at least one verified execution record** (a session log or output showing that runtime reading the canonical context) counts as "connected." What this criterion measures is **verified portability**, not constant multi-runtime operation.
+
 ### X2. Device & Agent Topology
 
 Core question: Are the roles and output paths of multiple devices and agents defined, with sync conflicts managed?
@@ -420,6 +428,10 @@ Core question: Does the system exist as documents and kits — not just inside t
 
 Collect the following from the evaluee, or inspect it directly. For remote evaluations, screenshots and file copies may substitute.
 
+**System boundary declaration (v1.1)**: before scoring begins, declare the boundary of the evaluated system in the report — the vaults, repositories, devices, and agent hosts included. This prevents evaluator discretion over boundaries from driving scores in distributed systems (publishing corpus on a separate drive, agent host on a separate PC).
+
+**Unreached-node clause (v1.1)**: enforcement mechanisms on nodes unreachable during the evaluation session (another PC's config, an offline host) may be substantiated by **behavioral traces** — N or more instances of consistently pathed/permissioned outputs. In that case, list the unreached nodes and the substitution method in the report. A score should be a property of the system, not a function of where the evaluation session happened to run.
+
 **Mandatory artifact checklist**
 
 | # | Artifact | Related criteria |
@@ -453,6 +465,7 @@ Collect the following from the evaluee, or inspect it directly. For remote evalu
 - Per-pillar subtotals and the total score, with the maturity band
 - Top 3 strengths / top 3 priority improvements (with estimated score gains)
 - (For multi-environment users) a per-runtime current-status and direction matrix
+- **(Recommended, v1.1) Root-cause deduction trace**: a table tracing major deductions back to root design choices. It does not affect scoring; it is a diagnostic deliverable that aims the improvement roadmap at causes rather than symptoms
 
 ### 8.4 Anti-Gaming Cautions
 
@@ -475,6 +488,7 @@ Multi-runtime users complete the matrix below in addition to the total score. It
 
 ## 10. Versioning & License
 
+- **v1.1.0** (2026-07-21): revision incorporating field feedback — 6 items adopted from the adversarial-verification feedback by Changhyun Ahn (Achmage OS field assessment, 2026-07-20). ① "Two forms of observation" note for Level 4 (quantitative metrics and dated qualitative incident records accepted equally) ② P3 central routing registry as an equivalent path ③ X1 verified-portability note ④ L-pillar planned-pause clause ⑤ §8.1 system boundary declaration and unreached-node clause ⑥ §8.3 root-cause deduction trace (recommended deliverable). **The 5 pillars × 25 criteria, weights, level ladder, and scoring formula are identical to v1.0** — scores remain comparable.
 - **v1.0.0** (2026-07-16): first public release. 5 pillars × 25 criteria. Reference case: published together with the measured evaluation of the CMDS (Yohan Koo) system.
 - Revision policy: adding or removing criteria is a minor version; editing anchor wording is a patch. Weights to be revisited once 5 measured cases have accumulated.
-- Use: free to use and adapt. Attribution "based on AKM Index v1.0" is recommended in evaluation reports.
+- Use: free to use and adapt. Attribution "based on AKM Index v1.1" is recommended in evaluation reports.

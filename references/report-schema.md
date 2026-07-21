@@ -24,7 +24,7 @@
 {
   "date": "YYYY-MM-DD",
   "durationMinutes": 75,
-  "rubricVersion": "1.0.0",
+  "rubricVersion": "1.1.0",
   "mode": "self-run | remote-kit | local-parallel-audit",
   "modeLabel": { "ko": "셀프 평가", "en": "Self-run" },
   "evaluator": "채점한 에이전트/사람 (예: Claude Code + self adversarial pass)",
