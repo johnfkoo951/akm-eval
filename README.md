@@ -75,7 +75,7 @@ akm-eval/
     ├── rubric-en.md              # 영문판
     ├── report-schema.md          # akm-report.json 스키마 v1.0 + 제출 API
     ├── report-template.html      # 로컬 성적표 HTML 템플릿 (7단계)
-    └── runtime-paths.md          # 런타임 경로 레지스트리 — Claude Code 외 에이전트(Codex/Gemini/Grok Build/Hermes/OpenClaw 등)의 세션·스킬·설정 탐지 경로
+    └── runtime-paths.md          # 런타임 경로 레지스트리 — Claude Code 외 에이전트(Codex/Gemini/Grok Build/Hermes/OpenClaw/Gajae-Code(.gjc) 등)의 세션·스킬·설정 탐지 경로
 ```
 
 ## 스키마 (요약)
