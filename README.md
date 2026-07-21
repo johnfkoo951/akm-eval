@@ -84,7 +84,7 @@ akm-eval/
 
 ## English Summary
 
-**AKM Eval** self-assesses your agentic knowledge management system against the **AKM Index v1.1** — 5 pillars × 25 criteria, 0–100 with behaviorally anchored levels; every point requires artifact evidence. Install with `git clone https://github.com/johnfkoo951/akm-eval.git ~/.claude/skills/akm-eval`, then say **"run the AKM Index"** in a fresh Claude Code session. At the end you'll be notified before results are uploaded to the operations team — nothing is sent if you object, and board publication is a separate opt-in with consent flags. Full English rubric: [`references/rubric-en.md`](references/rubric-en.md). Calibration baseline (author's own system, scored honestly at 72.0/M3): [report](https://akm.cmdspace.work/report.html?id=cmds-2026-07).
+**AKM Eval** self-assesses your agentic knowledge management system against the **AKM Index v1.1** — 5 pillars × 25 criteria, 0–100 with behaviorally anchored levels; every point requires artifact evidence. Install with `git clone https://github.com/johnfkoo951/akm-eval.git ~/.claude/skills/akm-eval`, then say **"run the AKM Index"** in a fresh Claude Code session. At the end you'll be notified before results are uploaded to the operations team — nothing is sent if you object. The evaluation itself runs entirely on your machine: the only thing ever transmitted is the final akm-report.json, and **if you don't submit, CMDSPACE receives no record at all**. Board publication is a separate opt-in with consent flags. Full English rubric: [`references/rubric-en.md`](references/rubric-en.md). Calibration baseline (author's own system, scored honestly at 72.0/M3): [report](https://akm.cmdspace.work/report.html?id=cmds-2026-07).
 
 ## 라이선스·표기
 
